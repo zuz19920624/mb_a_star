@@ -2,9 +2,57 @@
 //
 
 #include <iostream>
+#include "data_struct.h"
+
+extern blockMemClass* blockMem;
+extern blockOpenList* blockList;
+extern blockClassCache* blockCache;
+extern blockOpenListCache* BOCache;
+
+//initialize the block's structure and memory
+void initBlockMem(int grid[][HEIGHT_OF_MAP])
+{
+    for(int i = 0; i < NUM_OF_BLOCK_X; i++)
+        for (int j = 0; j < NUM_OF_BLOCK_Y; j++)
+        {
+            //initialize each block
+            blockMem->block[j * NUM_OF_BLOCK_X + i].heap_value = MXV;
+            //initialize each node
+            for(int node_i = 0; node_i < WIDTH_OF_BLOCK; node_i++)
+                for (int node_j = 0; node_j < HEIGHT_OF_BLOCK; node_j++)
+                {
+                    blockMem->block[j * NUM_OF_BLOCK_X + i].node[node_j * WIDTH_OF_BLOCK + node_i].f = MXV;
+                    blockMem->block[j * NUM_OF_BLOCK_X + i].node[node_j * WIDTH_OF_BLOCK + node_i].inCloseList = 0;
+                    int grid_x = i * WIDTH_OF_BLOCK + node_i;
+                    int grid_y = j * HEIGHT_OF_BLOCK + node_j;
+                    blockMem->block[j * NUM_OF_BLOCK_X + i].node[node_j * WIDTH_OF_BLOCK + node_i].isReachable = grid[grid_x][grid_y];
+                }
+        }
+}
+
+//step1 : read the block containing start point
+void readBlockInfoIntoCache(int block_i, int block_j)
+{
+
+}
 
 int main()
 {
+    blockMem = new blockMemClass();
+    blockList = new blockOpenList();
+    blockCache = new blockClassCache();
+    int grid[WIDTH_OF_MAP][HEIGHT_OF_MAP] =
+    {
+        { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+        { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+        { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
+        { 0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
+        { 1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
+        { 1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
+        { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+        { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+        { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 }
+    };
     std::cout << "Hello World!\n";
 }
 

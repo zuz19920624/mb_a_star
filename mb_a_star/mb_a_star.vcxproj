@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="data.cpp" />
     <ClCompile Include="mb_a_star.cpp" />
   </ItemGroup>
   <ItemGroup>

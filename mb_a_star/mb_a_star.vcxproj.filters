@@ -18,6 +18,9 @@
     <ClCompile Include="mb_a_star.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_struct.h">
