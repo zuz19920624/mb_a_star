@@ -7,6 +7,7 @@
 #define NUM_OF_BLOCK_X ( (WIDTH_OF_MAP + WIDTH_OF_BLOCK) / WIDTH_OF_BLOCK)
 #define NUM_OF_BLOCK_Y ( (HEIGHT_OF_MAP + HEIGHT_OF_BLOCK) / HEIGHT_OF_BLOCK)
 #define MXV     0xffffffff   //maxium
+#define NUM_OF_BLOCK_CACHE 4
 
 class nodeClass
 {
@@ -63,10 +64,18 @@ public:
     blockClass block[NUM_OF_BLOCK_X * NUM_OF_BLOCK_Y];
 }; // in mem
 
+class blockCacheDataClass
+{
+public:
+    blockClass block;
+    int block_i;
+    int block_j; //used to record the id of stored blocks id
+    int dirty; //indicating that current tag is dirty
+    int init; //current tag contains things
+};
+
 class blockClassCache
 {
 public:
-    blockClass block[4];
-    int block_i[4];
-    int block_j[4]; //used to record the id of stored blocks id
+    blockCacheDataClass bc[NUM_OF_BLOCK_CACHE];
 };
