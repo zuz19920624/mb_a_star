@@ -7,7 +7,7 @@
 #define NUM_OF_BLOCK_X ( (WIDTH_OF_MAP + WIDTH_OF_BLOCK) / WIDTH_OF_BLOCK)
 #define NUM_OF_BLOCK_Y ( (HEIGHT_OF_MAP + HEIGHT_OF_BLOCK) / HEIGHT_OF_BLOCK)
 #define MXV     0xffffffff   //maxium
-#define NUM_OF_BLOCK_CACHE 4
+#define NUM_OF_BLOCK_CACHE 20
 
 class nodeClass
 {
@@ -78,4 +78,5 @@ class blockClassCache
 {
 public:
     blockCacheDataClass bc[NUM_OF_BLOCK_CACHE];
+    int replacedPointer;
 };

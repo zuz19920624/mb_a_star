@@ -7,3 +7,6 @@ blockOpenList* blockList;
 //cache
 blockClassCache* blockCache;
 blockOpenListCache* BOCache;
+
+//on board mem
+nodeOpenList* no;
